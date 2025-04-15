@@ -13,6 +13,18 @@ st.set_page_config(
 # API endpoint - use environment variable or default to localhost
 API_URL = st.secrets.get("api_url", "http://localhost:8000")
 
+# Display backend connection status
+st.sidebar.markdown("### Backend Status")
+try:
+    response = requests.get(f"{API_URL}/users")
+    if response.status_code == 200:
+        st.sidebar.success("✅ Connected to backend")
+    else:
+        st.sidebar.error(f"❌ Backend error: {response.status_code}")
+except:
+    st.sidebar.error(f"❌ Cannot connect to backend at {API_URL}")
+    st.info("⚠️ The backend service is not available. Please make sure the backend URL is correctly configured in Streamlit's secrets.")
+
 def get_users():
     try:
         response = requests.get(f"{API_URL}/users")
