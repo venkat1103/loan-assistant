@@ -11,38 +11,37 @@ st.set_page_config(
 )
 
 # API endpoint - use environment variable or default to localhost
-API_URL = os.getenv("API_URL", "http://localhost:8000")
-
-# Initialize connection to MongoDB
-if "mongodb" in st.secrets:
-    mongo_uri = st.secrets["mongodb"]["uri"]
-else:
-    mongo_uri = "mongodb://localhost:27017"
-
-# Initialize Pinecone
-if "pinecone" in st.secrets:
-    pinecone_api_key = st.secrets["pinecone"]["api_key"]
+API_URL = st.secrets.get("api_url", "http://localhost:8000")
 
 def get_users():
-    response = requests.get(f"{API_URL}/users")
-    if response.status_code == 200:
-        return response.json()["users"]
+    try:
+        response = requests.get(f"{API_URL}/users")
+        if response.status_code == 200:
+            return response.json()["users"]
+    except:
+        st.error("Unable to connect to backend service")
     return []
 
 def get_categories():
-    response = requests.get(f"{API_URL}/categories")
-    if response.status_code == 200:
-        return response.json()["categories"]
+    try:
+        response = requests.get(f"{API_URL}/categories")
+        if response.status_code == 200:
+            return response.json()["categories"]
+    except:
+        st.error("Unable to connect to backend service")
     return []
 
 def query_assistant(question, selected_user=None):
-    payload = {
-        "question": question,
-        "user": selected_user
-    }
-    response = requests.post(f"{API_URL}/query", json=payload)
-    if response.status_code == 200:
-        return response.json()
+    try:
+        payload = {
+            "question": question,
+            "user": selected_user
+        }
+        response = requests.post(f"{API_URL}/query", json=payload)
+        if response.status_code == 200:
+            return response.json()
+    except:
+        st.error("Unable to connect to backend service")
     return []
 
 # Sidebar
