@@ -1,0 +1,171 @@
+{
+  "interest_percentage": [
+    {
+      "user": "Venkat",
+      "question": "I took a ₹10 lakh loan in January at what interest rate? What's my current ROI?",
+      "answer": "Venkat, your ₹10 lakh loan was disbursed on Jan 10, 2024 at **11.5% fixed interest rate**. Your current rate remains **11.5%** (no changes for fixed-rate loans).",
+      "metadata": {
+        "loan_type": "fixed-rate",
+        "effective_interest": "11.5%",
+        "last_updated": "2024-04-01",
+        "loan_amount": "₹10 lakh",
+        "disbursement_date": "2024-01-10"
+      }
+    },
+    {
+      "user": "Shay",
+      "question": "I took a ₹20 lakh loan in January at what interest rate? What's my current ROI?",
+      "answer": "Shay, your ₹20 lakh loan was disbursed on Jan 15, 2024 at **12.0% fixed interest rate**. Your current rate remains **12.0%** (no changes for fixed-rate loans).",
+      "metadata": {
+        "loan_type": "fixed-rate",
+        "effective_interest": "12.0%",
+        "last_updated": "2024-04-01",
+        "loan_amount": "₹20 lakh",
+        "disbursement_date": "2024-01-15"
+      }
+    },
+    {
+      "user": "Karthik",
+      "question": "I took a ₹30 lakh loan in January at what interest rate? What's my current ROI?",
+      "answer": "Karthik, your ₹30 lakh loan was disbursed on Jan 20, 2024 at **12.5% fixed interest rate**. Your current rate remains **12.5%** (no changes for fixed-rate loans).",
+      "metadata": {
+        "loan_type": "fixed-rate",
+        "effective_interest": "12.5%",
+        "last_updated": "2024-04-01",
+        "loan_amount": "₹30 lakh",
+        "disbursement_date": "2024-01-20"
+      }
+    }
+  ],
+  "upcoming_emi_date": [
+    {
+      "user": "Venkat",
+      "question": "When is my next EMI due for my ₹10 lakh January loan?",
+      "answer": "Your next EMI of ₹25,000 is due on April 10, 2024.",
+      "metadata": {
+        "emi_amount": "₹25,000",
+        "due_date": "2024-04-10",
+        "loan_amount": "₹10 lakh"
+      }
+    },
+    {
+      "user": "Shay",
+      "question": "When is my next EMI due for my ₹20 lakh January loan?",
+      "answer": "Your next EMI of ₹50,000 is due on April 15, 2024.",
+      "metadata": {
+        "emi_amount": "₹50,000",
+        "due_date": "2024-04-15",
+        "loan_amount": "₹20 lakh"
+      }
+    },
+    {
+      "user": "Karthik",
+      "question": "When is my next EMI due for my ₹30 lakh January loan?",
+      "answer": "Your next EMI of ₹75,000 is due on April 20, 2024.",
+      "metadata": {
+        "emi_amount": "₹75,000",
+        "due_date": "2024-04-20",
+        "loan_amount": "₹30 lakh"
+      }
+    }
+  ],
+  "pending_loan": [
+    {
+      "user": "Venkat",
+      "question": "How much of my ₹10 lakh loan is pending after 3 EMIs (Jan-Mar)?",
+      "answer": "After 3 EMIs, your pending loan amount is ₹9,25,000.",
+      "metadata": {
+        "original_loan": "₹10 lakh",
+        "paid_amount": "₹75,000",
+        "pending_amount": "₹9,25,000",
+        "emi_count": "3"
+      }
+    },
+    {
+      "user": "Shay",
+      "question": "How much of my ₹20 lakh loan is pending after 3 EMIs (Jan-Mar)?",
+      "answer": "After 3 EMIs, your pending loan amount is ₹18,50,000.",
+      "metadata": {
+        "original_loan": "₹20 lakh",
+        "paid_amount": "₹1,50,000",
+        "pending_amount": "₹18,50,000",
+        "emi_count": "3"
+      }
+    },
+    {
+      "user": "Karthik",
+      "question": "How much of my ₹30 lakh loan is pending after 3 EMIs (Jan-Mar)?",
+      "answer": "After 3 EMIs, your pending loan amount is ₹27,75,000.",
+      "metadata": {
+        "original_loan": "₹30 lakh",
+        "paid_amount": "₹2,25,000",
+        "pending_amount": "₹27,75,000",
+        "emi_count": "3"
+      }
+    }
+  ],
+  "interest_paid": [
+    {
+      "user": "Venkat",
+      "question": "How much interest have I paid till now on my ₹10 lakh loan?",
+      "answer": "You have paid ₹28,750 in interest so far.",
+      "metadata": {
+        "total_interest_paid": "₹28,750",
+        "interest_per_emi": "₹9,583",
+        "emi_count": "3"
+      }
+    },
+    {
+      "user": "Shay",
+      "question": "How much interest have I paid till now on my ₹20 lakh loan?",
+      "answer": "You have paid ₹60,000 in interest so far.",
+      "metadata": {
+        "total_interest_paid": "₹60,000",
+        "interest_per_emi": "₹20,000",
+        "emi_count": "3"
+      }
+    },
+    {
+      "user": "Karthik",
+      "question": "How much interest have I paid till now on my ₹30 lakh loan?",
+      "answer": "You have paid ₹93,750 in interest so far.",
+      "metadata": {
+        "total_interest_paid": "₹93,750",
+        "interest_per_emi": "₹31,250",
+        "emi_count": "3"
+      }
+    }
+  ],
+  "prepayment_savings": [
+    {
+      "user": "Venkat",
+      "question": "If I prepay ₹50,000 of my ₹10 lakh loan now, how much interest will I save?",
+      "answer": "Prepaying ₹50,000 now will save you approximately ₹57,500 in total interest.",
+      "metadata": {
+        "prepayment_amount": "₹50,000",
+        "interest_saved": "₹57,500",
+        "loan_tenure_reduction": "2 years"
+      }
+    },
+    {
+      "user": "Shay",
+      "question": "If I prepay ₹50,000 of my ₹20 lakh loan now, how much interest will I save?",
+      "answer": "Prepaying ₹50,000 now will save you approximately ₹60,000 in total interest.",
+      "metadata": {
+        "prepayment_amount": "₹50,000",
+        "interest_saved": "₹60,000",
+        "loan_tenure_reduction": "1 year"
+      }
+    },
+    {
+      "user": "Karthik",
+      "question": "If I prepay ₹50,000 of my ₹30 lakh loan now, how much interest will I save?",
+      "answer": "Prepaying ₹50,000 now will save you approximately ₹62,500 in total interest.",
+      "metadata": {
+        "prepayment_amount": "₹50,000",
+        "interest_saved": "₹62,500",
+        "loan_tenure_reduction": "8 months"
+      }
+    }
+  ]
+} 

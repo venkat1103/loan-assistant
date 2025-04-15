@@ -1,0 +1,8 @@
+.env
+*.gguf
+__pycache__/
+*.pyc
+.venv/
+.DS_Store
+chroma_store/
+*.sqlite3 
