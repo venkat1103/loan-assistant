@@ -5,8 +5,13 @@ from pinecone import Pinecone
 from transformers import AutoTokenizer, AutoModel
 import torch
 import json
+import os
 from typing import List, Optional
 from fastapi.middleware.cors import CORSMiddleware
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
 
 app = FastAPI(title="Loan Assistant API")
 
@@ -19,17 +24,13 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Load configuration
-with open('config.json', 'r') as f:
-    config = json.load(f)
-
 # Initialize MongoDB
-mongo_client = MongoClient(config['mongodb_uri'])
+mongo_client = MongoClient(os.getenv('MONGODB_URI', 'mongodb://localhost:27017'))
 db = mongo_client['loan_assistant']
 questions_collection = db['questions']
 
 # Initialize Pinecone
-pc = Pinecone(api_key=config['pinecone_api_key'])
+pc = Pinecone(api_key=os.getenv('PINECONE_API_KEY'))
 index = pc.Index("loan-ai-index")
 
 # Load model and tokenizer

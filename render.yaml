@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: loan-assistant-api
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: cd llm_model && uvicorn fastapi_backend:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: MONGODB_URI
+        sync: false
+      - key: PINECONE_API_KEY
+        sync: false 
