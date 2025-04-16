@@ -25,12 +25,22 @@ app.add_middleware(
 )
 
 # Initialize MongoDB
-mongo_client = MongoClient(os.getenv('MONGODB_URI', 'mongodb://localhost:27017'))
+mongo_uri = os.getenv('MONGODB_URI')
+if not mongo_uri:
+    print("WARNING: MONGODB_URI environment variable not set, falling back to localhost")
+    mongo_uri = 'mongodb://localhost:27017'
+    
+mongo_client = MongoClient(mongo_uri)
 db = mongo_client['loan_assistant']
 questions_collection = db['questions']
 
 # Initialize Pinecone
-pc = Pinecone(api_key=os.getenv('PINECONE_API_KEY'))
+pinecone_api_key = os.getenv('PINECONE_API_KEY')
+if not pinecone_api_key:
+    print("WARNING: PINECONE_API_KEY environment variable not set")
+    pinecone_api_key = "pcsk_5FJVfR_3D7oiX6nAMi9YKCAxJS1mnqmjnsS7fDJQjyqg9B91iWuC19CtLoeMJjK9DGERwB"
+
+pc = Pinecone(api_key=pinecone_api_key)
 index = pc.Index("loan-ai-index")
 
 # Load model and tokenizer
@@ -128,6 +138,10 @@ async def process_query(query: Query):
         
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/")
+async def health_check():
+    return {"status": "ok", "message": "Loan Assistant API is running"}
 
 @app.get("/users")
 async def get_users():

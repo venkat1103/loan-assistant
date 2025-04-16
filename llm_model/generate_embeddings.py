@@ -3,9 +3,18 @@ from pinecone import Pinecone
 from transformers import AutoTokenizer, AutoModel
 import torch
 import json
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
 
 # Initialize Pinecone
-pc = Pinecone(api_key="pcsk_5FJVfR_3D7oiX6nAMi9YKCAxJS1mnqmjnsS7fDJQjyqg9B91iWuC19CtLoeMJjK9DGERwB")
+pinecone_api_key = os.getenv('PINECONE_API_KEY')
+if not pinecone_api_key:
+    print("WARNING: PINECONE_API_KEY environment variable not set")
+    pinecone_api_key = "pcsk_5FJVfR_3D7oiX6nAMi9YKCAxJS1mnqmjnsS7fDJQjyqg9B91iWuC19CtLoeMJjK9DGERwB"
+
+pc = Pinecone(api_key=pinecone_api_key)
 
 # Get the index
 index = pc.Index("loan-ai-index")
