@@ -27,7 +27,7 @@ PINECONE_API_KEY=your_pinecone_api_key
 3. Start the FastAPI backend:
 ```bash
 cd llm_model
-python fastapi_backend.py
+python -m uvicorn fastapi_backend:app --host 0.0.0.0 --port 8000
 ```
 
 4. Start the Streamlit frontend:
@@ -35,6 +35,34 @@ python fastapi_backend.py
 cd llm_model
 streamlit run streamlit_frontend.py
 ```
+
+## Deployment
+
+### MongoDB Atlas Setup
+1. Create a MongoDB Atlas account and cluster
+2. Set up a database user with read/write permissions
+3. Configure Network Access to allow connections from your deployment
+4. Get your connection string in the format: `mongodb+srv://username:password@cluster.mongodb.net/loan_assistant`
+
+### Render Deployment
+1. Create a new Web Service in Render
+2. Connect to your GitHub repository
+3. Set the build command: `pip install -r requirements.txt`
+4. Set the start command: `cd llm_model && uvicorn fastapi_backend:app --host 0.0.0.0 --port $PORT`
+5. Add environment variables:
+   - `MONGODB_URI`: Your MongoDB Atlas connection string
+   - `PINECONE_API_KEY`: Your Pinecone API key
+
+### Streamlit Deployment
+1. For Streamlit Cloud deployment, use the simplified requirements:
+   - Create a new app in Streamlit Cloud
+   - Point to your GitHub repo and the main.py file
+   - Set the `api_url` secret to your Render backend URL
+
+2. For local Streamlit with cloud backend:
+   - Create a `.streamlit/secrets.toml` file based on the example
+   - Set `api_url` to your Render backend URL
+   - Run streamlit locally: `cd llm_model && streamlit run streamlit_frontend.py`
 
 ## Usage
 
